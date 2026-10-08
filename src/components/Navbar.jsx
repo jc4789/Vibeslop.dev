@@ -13,6 +13,7 @@ export default function Navbar() {
           <a href="#session" className="hover:text-ink">Session</a>
           <a href="#meter" className="hover:text-ink">The file</a>
           <a href="#round" className="hover:text-ink">The round</a>
+          <a href="#pricing" className="hover:text-ink">Pricing</a>
           <a href="#review" className="hover:text-ink">Review</a>
           <a
             href={REPO}

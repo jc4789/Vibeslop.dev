@@ -2,6 +2,8 @@ import { useState } from 'react'
 
 const FILES = [
   { name: 'src/auth/session.ts', stat: '+2 -1' },
+  { name: '.env', stat: '+11 -0', warn: 'contains secrets' },
+  { name: 'src/billing/invoice.ts', stat: '+40 -18' },
   { name: 'package-lock.json', stat: '+1,904 -12' },
   { name: 'src/app.tsx', stat: '+640 -4' },
   { name: 'README.md', stat: '+88 -3' },
@@ -11,6 +13,7 @@ const BOXES = [
   { id: 'read', label: 'I read the diff' },
   { id: 'ran', label: 'I ran it' },
   { id: 'page', label: 'I will answer the page' },
+  { id: 'env', label: 'I checked what it committed' },
 ]
 
 const DIFF = [
@@ -23,7 +26,7 @@ const DIFF = [
 
 export default function Review() {
   const [name, setName] = useState('')
-  const [checked, setChecked] = useState({ read: true, ran: true, page: true })
+  const [checked, setChecked] = useState({ read: true, ran: true, page: true, env: true })
   const [result, setResult] = useState(null)
 
   function approve() {
@@ -53,11 +56,14 @@ export default function Review() {
         <ul className="border-b border-line text-sm">
           {FILES.map((file) => (
             <li key={file.name} className="flex items-baseline justify-between gap-4 px-4 py-2 font-mono text-[13px] sm:px-5">
-              <span className="min-w-0 truncate">{file.name}</span>
+              <span className="min-w-0 truncate">
+                {file.name}
+                {file.warn && <span className="ml-2 text-rust">{file.warn}</span>}
+              </span>
               <span className="shrink-0 text-muted">{file.stat}</span>
             </li>
           ))}
-          <li className="px-4 py-2 text-sm text-muted sm:px-5">182 files not shown</li>
+          <li className="px-4 py-2 text-sm text-muted sm:px-5">180 files not shown</li>
         </ul>
 
         <div className="border-b border-line">

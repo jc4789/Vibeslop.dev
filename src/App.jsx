@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import Session from './components/Session'
 import Meter from './components/Meter'
 import PitchGenerator from './components/PitchGenerator'
+import Pricing from './components/Pricing'
 import Review from './components/Review'
 import Footer from './components/Footer'
 
@@ -21,6 +22,7 @@ export default function App() {
         <Session />
         <Meter />
         <PitchGenerator />
+        <Pricing />
         <Review />
       </main>
       <Footer />

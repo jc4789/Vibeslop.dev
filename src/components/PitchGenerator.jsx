@@ -1,216 +1,184 @@
-import React, { useState } from 'react'
-import { Sparkles, DollarSign, Copy, Check, RefreshCw, Trophy, TrendingUp, Zap } from 'lucide-react'
-import confetti from 'canvas-confetti'
-import { playSound } from '../utils/sound'
+import { useState } from 'react'
 
-const PITCH_DATA = {
-  prefixes: [
-    'Autonomous', 'Decentralized', 'Hyper-personalized', 'Quantum-aligned', 
-    'Agentic', 'Recursive', 'Zero-latency', 'Synthetic', 'Psychic'
-  ],
-  nouns: [
-    'Toaster Swarms', 'Vibe Coding Copilots', 'B2B Emotional Pipelines', 
-    'Hallucinated Microservices', 'Prompt-Engineered Spreadsheets',
-    'LinkedIn Thought Leader Bots', 'Unsupervised Database Whispering',
-    'Synthetic VC Pitch Machines', 'Neuro-divergent Cron Jobs'
-  ],
-  problems: [
-    'Human developers spend an unbearable 12 seconds reading stack traces.',
-    'Enterprises are tragically lacking unhinged synthetic content loops.',
-    'Founders keep remembering that unit tests exist.',
-    'Modern software has too much deterministic logic and not enough spiritual energy.',
-    'Legacy systems require human understanding before deployment.'
-  ],
-  moats: [
-    'We run 97 cascading agent prompts in an infinite feedback loop until the cloud bill maxes out.',
-    'A proprietary vibe-loss function that penalizes common sense.',
-    'We never read documentation; we only communicate with the model via intuition.',
-    'An $8 domain name that intimidates legacy Fortune 500 competitors.'
-  ],
-  valuations: ['$18.5M', '$42.0M', '$69.4M', '$100M Seed', '$420M Post-Money'],
-  tams: ['$34 Trillion by next Tuesday', 'The entire global GDP of the latent space', 'Every spreadsheet ever made', 'Infinite']
+const PITCHES = [
+  {
+    name: 'Paperweight',
+    line: 'Compliance, generated after the incident.',
+    problem: 'The auditor asked for the policy. The policy was never written. The incident was.',
+    product: 'We read the incident channel and write the policy the channel implies you already had.',
+    moat: 'The PDF has your logo on it. That has been enough.',
+    traction: 'One design partner. They cannot be named, because of the incident.',
+    ask: 'Raising a party round. Attendance is the diligence.',
+  },
+  {
+    name: 'Lowdoor',
+    line: 'The agent that sits in the standup so you do not have to.',
+    problem: 'The standup takes fifteen minutes and produces a list.',
+    product: 'We produce the list. The fifteen minutes are optional, and then they are gone.',
+    moat: 'It has posted in the channel for three weeks. Removing it now reads as being against standups.',
+    traction: 'Installed in 40 workspaces. 37 of those installs were an agent adding another agent.',
+    ask: 'Raising $4M on a SAFE. The cap came out of the conversation because it was slowing the conversation down.',
+  },
+  {
+    name: 'Secondset',
+    line: 'A summary of the other AI tools you already pay for.',
+    problem: 'Six subscriptions read your work. You read none of the summaries.',
+    product: 'Each morning we summarize the summaries. This one also goes unread, but it arrives first.',
+    moat: 'Cancelling us does not cancel the other six. After a month, most people cannot tell which one we were.',
+    traction: '1,204 stars. The repository contains a license and a README.',
+    ask: 'Raising $3M. The product is a cron job. The cron job is not the expensive part.',
+  },
+  {
+    name: 'Halve',
+    line: 'Stripe for the invoice you were going to send as a PDF.',
+    problem: 'People still get paid by emailing a document and waiting.',
+    product: 'We email the document, then ask a model whether anyone has paid it.',
+    moat: 'The format is just different enough that nothing else imports it cleanly.',
+    traction: 'Four customers. Three of them are pilots at the founder\u2019s last employer.',
+    ask: 'Raising $1.8M. Use of funds: inference, and someone to redo the deck.',
+  },
+  {
+    name: 'Deskless',
+    line: 'A CRM for people you met once.',
+    problem: 'You had their name in a note. The note is gone, and so is the reason you took it.',
+    product: 'We draft the follow-up. You will not send it. The draft is the record that you meant to.',
+    moat: 'We are the system of record for conversations that did not happen.',
+    traction: 'MRR is $640. All of it is the founder\u2019s card, so the retention number is very good.',
+    ask: 'Raising $2.5M to hire four more agents and one person who can explain the agents on a call.',
+  },
+  {
+    name: 'Brine',
+    line: 'Auth, moved one step to the left, still broken where it was.',
+    problem: 'Login fails for customers and not for the demo account.',
+    product: 'We put a provider in front of your handler. The provider calls your handler.',
+    moat: 'We sit in the middle of the request. Removing us means the request has nowhere to finish.',
+    traction: 'The demo passes. The demo user was inserted by hand the night before.',
+    ask: 'Raising $1.2M. The runway assumes inference gets cheaper this year. It has not.',
+  },
+  {
+    name: 'Northparcel',
+    line: 'Deploys for teams that already deployed and are no longer sure which one.',
+    problem: 'Something is in production. The commit is a guess, reconstructed from the bundle.',
+    product: 'We deploy whatever is on main, and we keep a list, so the argument afterwards is shorter.',
+    moat: 'Rollback is on the enterprise plan. Enterprise is a form that emails the founder.',
+    traction: 'A partner at a firm you have heard of replied \u201cinteresting\u201d and has not written again.',
+    ask: 'Raising $6M, so the next email can say that we are raising $6M.',
+  },
+  {
+    name: 'Oddment',
+    line: 'A marketplace for prompts people already pasted into a chat.',
+    problem: 'The good prompt is trapped in a transcript nobody can search.',
+    product: 'We sell the transcript back to the person who wrote it, with a heading.',
+    moat: 'Supply is unlimited and identical. The deck calls this liquidity.',
+    traction: 'GMV last month was $90. The take rate is 100%, because the seller is also us.',
+    ask: 'Not raising. The site says we are in talks, and inbound has picked up.',
+  },
+]
+
+function pitchText(pitch) {
+  return [
+    `${pitch.name}. ${pitch.line}`,
+    '',
+    pitch.problem,
+    pitch.product,
+    '',
+    `Moat: ${pitch.moat}`,
+    `Traction: ${pitch.traction}`,
+    pitch.ask,
+  ].join('\n')
 }
 
-function getRandom(arr) {
-  return arr[Math.floor(Math.random() * arr.length)]
-}
-
-export function generateRandomPitch() {
-  const prefix = getRandom(PITCH_DATA.prefixes)
-  const noun = getRandom(PITCH_DATA.nouns)
-  const problem = getRandom(PITCH_DATA.problems)
-  const moat = getRandom(PITCH_DATA.moats)
-  const valuation = getRandom(PITCH_DATA.valuations)
-  const tam = getRandom(PITCH_DATA.tams)
-
-  return {
-    title: `${prefix} ${noun}`,
-    tagline: `The World's First ${prefix.toLowerCase()} platform for ${noun.toLowerCase()}.`,
-    problem,
-    moat,
-    valuation,
-    tam,
-    traction: `${Math.floor(Math.random() * 80 + 12)}k bots on X bookmarked our launch announcement.`
-  }
-}
-
-export default function PitchGenerator({ soundEnabled, generatorRef }) {
-  const [pitch, setPitch] = useState(() => generateRandomPitch())
+export default function PitchGenerator() {
+  const [index, setIndex] = useState(0)
   const [copied, setCopied] = useState(false)
-  const [funded, setFunded] = useState(false)
+  const [copyFailed, setCopyFailed] = useState(false)
+  const [sent, setSent] = useState(false)
+  const pitch = PITCHES[index]
 
-  const handleGenerate = () => {
-    if (soundEnabled) playSound('pop')
-    setPitch(generateRandomPitch())
-    setFunded(false)
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(pitchText(pitch))
+      setCopied(true)
+      setCopyFailed(false)
+    } catch {
+      setCopied(false)
+      setCopyFailed(true)
+    }
+    window.setTimeout(() => {
+      setCopied(false)
+      setCopyFailed(false)
+    }, 2000)
   }
 
-  const handleCopy = () => {
-    const text = `🔥 ${pitch.title}\n${pitch.tagline}\n\n🚨 The Problem: ${pitch.problem}\n🛡️ The Moat: ${pitch.moat}\n💰 Asking Valuation: ${pitch.valuation} (TAM: ${pitch.tam})\n📈 Traction: ${pitch.traction}\n\nInvest now on vibeslop.dev!`
-    navigator.clipboard.writeText(text)
-    if (soundEnabled) playSound('vibe-shift')
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+  function another() {
+    setIndex((n) => (n + 1) % PITCHES.length)
+    setSent(false)
+    setCopied(false)
+    setCopyFailed(false)
   }
 
-  const handleAcceptFunding = () => {
-    if (soundEnabled) playSound('cha-ching')
-    setFunded(true)
-    confetti({
-      particleCount: 100,
-      spread: 80,
-      origin: { y: 0.6 }
-    })
-  }
+  const rows = [
+    ['Problem', pitch.problem],
+    ['Product', pitch.product],
+    ['Moat', pitch.moat],
+    ['Traction', pitch.traction],
+    ['Ask', pitch.ask],
+  ]
 
   return (
-    <section ref={generatorRef} id="pitch-generator" className="py-12 px-4 sm:px-6 max-w-4xl mx-auto">
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800 text-cyan-300 text-xs font-semibold uppercase tracking-wider mb-3">
-          <Zap className="w-3.5 h-3.5" />
-          Series A Slop Engine
-        </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">
-          The Instant VC Pitch Deck Generator
-        </h2>
-        <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
-          Need $15M in unearned seed capital? Click below to synthesize an unassailable tech startup pitch based entirely on hype terms.
-        </p>
-      </div>
+    <section id="round" className="mx-auto mt-16 max-w-3xl border-t border-line px-5 pt-16">
+      <p className="text-sm text-muted">The round</p>
+      <h2 className="mt-2 font-serif text-3xl leading-tight text-balance sm:text-4xl">
+        The same method, pointed at a fundraise.
+      </h2>
+      <p className="mt-4 max-w-[40rem] text-[15px] leading-relaxed text-muted">
+        Send it before anyone edits it. Editing is how these lose the thread.
+      </p>
 
-      {/* Main Pitch Card */}
-      <div className="relative rounded-2xl bg-slate-900/90 border border-slate-800 p-6 sm:p-8 shadow-2xl backdrop-blur-xl overflow-hidden glow-fuchsia">
-        {/* Decorative corner pill */}
-        <div className="absolute top-4 right-4 flex items-center gap-2">
-          <span className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-purple-950/80 border border-purple-800/80 text-purple-300">
-            SEED STAGE
-          </span>
-        </div>
+      <article className="mt-8 border border-line bg-white p-5 sm:p-6">
+        <h3 className="font-serif text-3xl leading-none">{pitch.name}</h3>
+        <p className="mt-3 text-lg leading-snug">{pitch.line}</p>
+        <dl className="mt-6 divide-y divide-line border-t border-line">
+          {rows.map(([label, value]) => (
+            <div key={label} className="grid gap-1 py-3 sm:grid-cols-[7rem_minmax(0,1fr)] sm:gap-4">
+              <dt className="text-sm text-muted">{label}</dt>
+              <dd className="text-sm leading-relaxed">{value}</dd>
+            </div>
+          ))}
+        </dl>
 
-        {/* Startup Name */}
-        <div className="mb-6">
-          <div className="text-xs uppercase tracking-wider text-fuchsia-400 font-bold mb-1">
-            Manifested Startup
-          </div>
-          <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            {pitch.title}
-          </h3>
-          <p className="text-slate-300 font-medium text-sm sm:text-base mt-1">
-            "{pitch.tagline}"
+        {sent && (
+          <p className="border-t border-line pt-4 text-sm leading-relaxed">
+            Sent. They replied <span className="font-mono text-[13px]">lgtm</span>.
+            They did not open the attachment.
           </p>
-        </div>
+        )}
 
-        {/* Pitch Details Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-          <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800/80">
-            <div className="text-xs font-semibold text-rose-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-              <span>🚨</span> The Critical Problem
-            </div>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              {pitch.problem}
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800/80">
-            <div className="text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-              <span>🛡️</span> Our Unfair Moat
-            </div>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              {pitch.moat}
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800/80">
-            <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-              <TrendingUp className="w-3.5 h-3.5" /> Early Traction
-            </div>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              {pitch.traction}
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800/80">
-            <div className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-              <DollarSign className="w-3.5 h-3.5" /> Proposed Valuation & TAM
-            </div>
-            <p className="text-xs sm:text-sm text-slate-200 font-mono font-bold">
-              {pitch.valuation} <span className="text-slate-400 font-normal">| TAM: {pitch.tam}</span>
-            </p>
-          </div>
-        </div>
-
-        {/* Action Controls */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-800/80">
+        <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3">
           <button
-            onClick={handleGenerate}
-            className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-semibold text-xs sm:text-sm transition flex items-center gap-2 cursor-pointer border border-slate-700"
+            type="button"
+            onClick={another}
+            className="border border-ink px-4 py-2.5 text-sm hover:bg-paper"
           >
-            <RefreshCw className="w-4 h-4 text-cyan-400" />
-            <span>Reroll Startup Slop</span>
+            Another
           </button>
-
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handleCopy}
-              className="px-4 py-2.5 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white font-medium text-xs sm:text-sm transition flex items-center gap-2 cursor-pointer"
-            >
-              {copied ? (
-                <>
-                  <Check className="w-4 h-4 text-emerald-400" />
-                  <span className="text-emerald-400">Copied to Clipboard!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4 text-slate-400" />
-                  <span>Copy Pitch</span>
-                </>
-              )}
-            </button>
-
-            <button
-              onClick={handleAcceptFunding}
-              disabled={funded}
-              className={`px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition flex items-center gap-2 cursor-pointer shadow-lg ${
-                funded
-                  ? 'bg-emerald-600 text-white cursor-default'
-                  : 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-emerald-500/20'
-              }`}
-            >
-              {funded ? (
-                <>
-                  <Trophy className="w-4 h-4 text-amber-300" />
-                  <span>TERM SHEET SIGNED! 🚀</span>
-                </>
-              ) : (
-                <>
-                  <DollarSign className="w-4 h-4" />
-                  <span>Accept Term Sheet</span>
-                </>
-              )}
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={copy}
+            className="text-sm underline underline-offset-4"
+          >
+            {copied ? 'Copied' : copyFailed ? 'Could not copy' : 'Copy for the thread'}
+          </button>
+          <button
+            type="button"
+            onClick={() => setSent(true)}
+            disabled={sent}
+            className="bg-ink px-4 py-2.5 text-sm text-paper hover:bg-black disabled:opacity-40"
+          >
+            {sent ? 'SAFE sent' : 'Send the SAFE'}
+          </button>
         </div>
-      </div>
+      </article>
     </section>
   )
 }

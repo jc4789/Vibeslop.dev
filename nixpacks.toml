@@ -1,3 +1,15 @@
 # Vite 8 needs Node >=22.12. Nixpacks 1.39's default snapshot ships nodejs_22 at 22.11.0.
+[variables]
+NIXPACKS_SPA_CADDY = "false"
+
 [phases.setup]
 nixpkgsArchive = "e6f23dc08d3624daab7094b701aa3954923c6bbb"
+
+[phases.install]
+cmds = ["npm ci --include=dev"]
+
+[phases.build]
+cmds = ["npm run lint", "npm test", "npm run build"]
+
+[start]
+cmd = "npm start"

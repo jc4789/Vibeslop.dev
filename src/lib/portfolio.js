@@ -39,6 +39,8 @@ export const PROJECTS = [
 ]
 
 export const NOCTURNE_SHOTS = [
+  { label: '本番の看板', src: '/projects/nocturne-portfolio.png', width: 1918, height: 1197, source: '作者提供の実画面', alt: 'Nocturneのデスクトップで、右の独自ブラウザーに公開中のvibeslop.devのポートフォリオを表示。左ではnestが次のアプリを制作している。', caption: '「ちょっと窓を開くだけ」の窓に、このサイトを表示。隣ではnestが次のアプリを制作中。看板まで自分のOSで見ています。' },
+  { label: '制作中の机', src: '/projects/nocturne-workbench.png', width: 1917, height: 1200, source: '作者提供の実画面', alt: 'Nocturne上で左にnestの制作ログと、22:28・runningと進捗リングを表示するfocusd。右の独自ブラウザーにはNocturne自身の作品紹介ページを表示している。', caption: '左に22:28と進捗リング、右にOS自身の紹介。「ちょっと窓を開くだけ」と言い張っていますが、机の上が黙ってくれません。' },
   { label: '実際の使用画面', src: '/projects/nocturne-live.png', width: 1916, height: 1200, source: '作者提供の実画面', alt: 'Nocturne内のnestにOSがAIスロップか質問し、隣の独自ブラウザーで同じ問いをDuckDuckGo検索している実画面。', caption: '自作OSの中で「これはスロップ？」とAIに聞く。隣の自作ブラウザーでも検索。審査員もOSの中にいます。' },
   { label: 'デスクトップ', src: '/projects/nocturne-desktop.png', width: 1280, height: 800, source: '実際の画面 / READMEより', alt: 'Nocturneの月と夜空のデスクトップ。スタートメニューと端末が開いている。', caption: '実際のNocturne。月、窓、タスクバー。その下のOSも制作物です。' },
   { label: 'ブラウザー', src: '/projects/nocturne-browser.png', width: 1280, height: 800, source: '実際の画面 / READMEより', alt: 'Nocturneの独自ブラウザーでWikipediaの月の記事を表示した画面。', caption: '自作ブラウザーで月の記事を表示。これは一つの画面で、全サイト対応の宣言ではありません。' },

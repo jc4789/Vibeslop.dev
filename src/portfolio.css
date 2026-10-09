@@ -54,10 +54,12 @@
 .project-layout > * { min-width: 0; }
 .capture-bar { display: flex; justify-content: space-between; gap: 8px; background: #1f1830; color: #c3b8d6; padding: 6px 9px; font-size: 8px; border: 1px solid #514267; border-bottom: 0; }
 .screenshot-button { display: block; position: relative; width: 100%; padding: 0; background: #060510; border: 1px solid #716080; overflow: hidden; }
+.screenshot-picture { display: block; }
 .screenshot-button img { display: block; width: 100%; height: auto; }
 .enlarge-hint { position: absolute; bottom: 9px; right: 9px; font-size: 9px; padding: 5px 8px; border: 1px solid #b8f8ec; background: #0a1424e8; color: #c0fff3; }
 .screenshot-button:hover .enlarge-hint { color: var(--yellow); border-color: var(--yellow); }
 .capture-tabs { display: flex; gap: 6px; margin-top: 10px; }
+.nocturne-gallery .capture-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
 .capture-tabs button { background: #1c152c; color: #bab0cc; border: 1px solid #695281; padding: 8px 10px; font-size: 9px; min-height: 34px; flex: 1; }
 .capture-tabs button[aria-pressed="true"] { color: #050e15; background: #a4e1cf; border-color: #d4ffee; }
 .capture-caption { color: #b8a8c7; font-size: 9px; margin-top: 10px; min-height: 32px; }
@@ -92,6 +94,7 @@
 .yuyan-dossier .project-bottomline { background: #1a0d23; border-color: #613259; color: #c6afcf; }
 .yuyan-dossier .project-bottomline a, .yuyan-dossier .understatement > button { color: #ff9dda; }
 .yuyan-gallery .screenshot-button { height: 520px; background: radial-gradient(ellipse at center,#29302d 0,#111718 55%,#080d11 100%); }
+.yuyan-gallery .screenshot-picture { height: 100%; }
 .yuyan-gallery .screenshot-button img { width: 100%; height: 100%; object-fit: contain; }
 .yuyan-gallery .capture-tabs { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); }
 .yuyan-gallery .capture-tabs button[aria-pressed="true"] { background: #eeb9d9; border-color: #ffd6eb; }
@@ -207,6 +210,7 @@
   .enlarge-hint { font-size: 7px; padding: 3px 5px; right: 6px; bottom: 6px; }
   .capture-tabs { gap: 4px; }
   .capture-tabs button { padding: 7px 4px; font-size: 8px; min-height: 44px; }
+  .nocturne-gallery .capture-tabs { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .capture-caption { font-size: 8px; min-height: 0; }
   .yuyan-gallery .screenshot-button { height: 460px; }
   .yuyan-gallery .capture-tabs { grid-template-columns: repeat(2,minmax(0,1fr)); }

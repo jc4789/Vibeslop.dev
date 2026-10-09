@@ -28,7 +28,7 @@ npm run build
 ## The experience
 
 - 自己PR出力制限装置：20 / 55 / 100%で看板のコピーだけを切替。能力測定値でも、作品の達成率でもありません。実際の説明や使用技術は変わりません。
-- Nocturneは作者提供の使用画面を主役に、READMEの3枚を含む無加工の実スクリーンショット4枚を切替・拡大。ネイティブdialogがないブラウザーでは、画像そのものを別タブで開きます。
+- Nocturneは作者提供の「自作OSでこのサイトを開く」画面と制作中の机を主役に、READMEの3枚を含む実スクリーンショット6枚を切替・拡大。配信はロスレスWebPを優先し、元PNGも保持。ネイティブdialogがないブラウザーでは、元画像を別タブで開きます。
 - 语言は作者提供の無加工スクリーンショット8枚を切替・拡大。読書、記事の保存確認、辞書ポップアップ、動画検索・再生、Jellyfinを掲載。辞書データは同梱せず、利用者が自分で用意して取り込みます。「読む・聴く → 選ぶ → 調べる → 残す」の紹介図は、補足として開けます。架空のアプリ画面やブラウザー版ではありません。
 - 作品の公開リポジトリ・配布先は推測せず、存在しないダウンロード/連絡先を置きません。
 - A CRT/Geocities portal, local visitor counter, popups you can drag, and a secret mode (press V three times outside an input).
@@ -52,6 +52,13 @@ npm start
 The production server serves **only `dist`**, defaults to port 3000, and honors `PORT` and `HOST`. `npm run preview` is for local inspection, not deployment ([Vite's deployment guide](https://vite.dev/guide/static-deploy.html)).
 
 Builds include Brotli/gzip assets. Hashed assets are immutable; HTML revalidates so updates are not pinned in a browser cache. Restart the server after replacing a build. Missing files return 404, not the app shell.
+
+### 画像の配信
+
+- NocturneのPNGは事前生成したロスレスWebPを優先。生成時に展開後の画素が元画像と一致することを確認します。小さい表示には、容量も小さくなる場合だけ960px版を用意し、拡大では元解像度を使います。
+- JPEGはすでに軽いため、再圧縮しません。元PNG/JPEGは残し、`picture`でWebP非対応ブラウザーへフォールバックします。遅延読込・非同期デコードも使用。
+- WebPは内容ハッシュ付きのファイル名で1年間キャッシュ。画像を更新するとURLも変わります。VPSでの動的変換や追加サービスは不要です。
+- 生成済み画像と `src/lib/image-assets.json` を一緒に保存します。元画像を交換した場合は、Sharpを利用できるローカル環境で `node scripts/optimize-images.mjs` を再実行。別の場所のSharpを使う場合は、引数にモジュールファイルのパスを渡せます。通常のビルド・配信にはSharpを必要としません。
 
 ## Deploy
 

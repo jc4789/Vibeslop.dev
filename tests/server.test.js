@@ -17,6 +17,7 @@ before(async () => {
   await writeFile(join(root, 'index.html'), '<!doctype html><title>Vibeslop</title>' + ' '.repeat(600))
   await writeFile(join(root, 'assets', 'index-abcdefgh.js'), script)
   await writeFile(join(root, 'assets', 'index-abcdefgh.css'), 'body { color: #24271e; }')
+  await writeFile(join(root, 'assets', 'capture-0123456789ab.webp'), Buffer.from('RIFF0000WEBP'))
   await writeFile(join(root, '.env'), 'NOT_A_REAL_SECRET=never_serve_dotfiles')
   await compressDirectory(root)
   server = createSiteServer({ directory: root })
@@ -71,6 +72,15 @@ test('supports HEAD and conditional requests without response bodies', async () 
   const cached = await get('/', { headers: { 'if-none-match': head.headers.etag } })
   assert.equal(cached.status, 304)
   assert.equal(cached.body.length, 0)
+})
+
+test('serves preoptimized WebP as an immutable image, without recompressing it', async () => {
+  const image = await get('/assets/capture-0123456789ab.webp', { headers: { 'accept-encoding': 'br, gzip' } })
+  assert.equal(image.status, 200)
+  assert.equal(image.headers['content-type'], 'image/webp')
+  assert.equal(image.headers['cache-control'], 'public, max-age=31536000, immutable')
+  assert.equal(image.headers['content-encoding'], undefined)
+  assert.equal(image.body.toString(), 'RIFF0000WEBP')
 })
 
 test('serves valid precompressed gzip and Brotli assets', async () => {

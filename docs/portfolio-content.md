@@ -9,7 +9,9 @@
 - QEMU / Hyper-V向けの趣味OS。実機、日常利用、全サイト互換、全面WebGL等を完成扱いしない。
 - Limine / BearSSL / Lexbor / QuickJS / TinyCC等を使うことは明示する。
 - `public/projects/nocturne-{desktop,browser,agent}.png` は同READMEから参照される `docs/{desktop-menu,browser,agent}.png` の無加工コピー。実画面であり、サイト上の模擬OSや互換性の証明ではない。
-- 主役画像 `public/projects/nocturne-live.png` は2026-10-09に作者がこの会話で提供した使用画面（1916×1200）。OS内のnestとDuckDuckGo検索を見せる。元画像は `C:/Users/cesta/AppData/Local/Temp/codex-clipboard-cb0619a3-4476-4ba7-a300-8c2527cd8690.png`。画面のAI発言は品質の独立評価やサイト互換の証明として扱わない。
+- `public/projects/nocturne-live.png` は2026-10-09に作者がこの会話で提供した使用画面（1916×1200）。OS内のnestとDuckDuckGo検索を見せる。元画像は `C:/Users/cesta/AppData/Local/Temp/codex-clipboard-cb0619a3-4476-4ba7-a300-8c2527cd8690.png`。画面のAI発言は品質の独立評価やサイト互換の証明として扱わない。
+- 新しい主役画像 `public/projects/nocturne-portfolio.png`（1918×1197）は、Nocturne内の独自ブラウザーに公開中のvibeslop.devを表示し、隣にnestの制作画面がある作者提供の無加工コピー。元画像は `C:/Users/cesta/AppData/Local/Temp/codex-clipboard-408b69e2-a2f5-4663-9a82-92b023404632.png`。
+- `public/projects/nocturne-workbench.png`（1917×1200）は、nestの制作ログ、22:28・runningと進捗リングを表示するfocusd、vibeslop.dev上のNocturne紹介ページを並べた作者提供の無加工コピー。元画像は `C:/Users/cesta/AppData/Local/Temp/codex-clipboard-20cf102a-c27e-44b2-a4d2-dfdad2443b82.png`。25:00・readyの旧写真から作者の了承で差し替え。画面の制作ログを独立した検証結果にはせず、focusdも第三の掲載作品にはしない。下部の「语言」もWebの紹介ページであり、アプリをNocturneで実行した証拠ではない。
 
 ## 语言
 
@@ -26,6 +28,8 @@
 - 学習の流れを説明する紹介図は補足の折りたたみ内に残し、実アプリ画面と明確に区別する。
 
 ## 表現
+
+- 公開用には元PNGからロスレスWebPを生成し、展開後の画素一致を確認。必要に応じて960pxの一覧表示用画像も生成する。元画像は保持し、非対応ブラウザー向けにも使う。JPEGは再圧縮しない。最適化は画像の出典・内容を変更するものではなく、拡大表示は元解像度のまま。
 
 - 作品名・機能説明は固定。自己紹介の「声量」20 / 55 / 100%のみ切替。達成率、性能、品質、AI能力の測定値ではない。
 - 控えめな看板と具体的な制作物の落差でサンドバッグと風刺を作る。虚偽の受賞、顧客、公開リポジトリ、ダウンロード先、連絡先を足さない。

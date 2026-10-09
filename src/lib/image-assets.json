@@ -1,0 +1,38 @@
+{
+  "/projects/nocturne-portfolio.png": {
+    "full": "/assets/nocturne-portfolio-4dc914ad17d8.webp",
+    "bytes": 159284,
+    "sourceHash": "88f12ba39972114361e8617dc2ef6970a9f0917267e2d3f51cc49760241d3eb5",
+    "preview": "/assets/nocturne-portfolio-960-c498fff7dc32.webp",
+    "previewWidth": 960,
+    "previewBytes": 139418
+  },
+  "/projects/nocturne-workbench.png": {
+    "full": "/assets/nocturne-workbench-aceedd8eeb08.webp",
+    "bytes": 207644,
+    "sourceHash": "c9689c42bd070d59643e5540b50d84f3c172124cfb315919c83a7e8079b18c7a",
+    "preview": "/assets/nocturne-workbench-960-480c90be77e5.webp",
+    "previewWidth": 960,
+    "previewBytes": 172014
+  },
+  "/projects/nocturne-live.png": {
+    "full": "/assets/nocturne-live-102bca6952e5.webp",
+    "bytes": 116934,
+    "sourceHash": "f368c2f97c2b94fb764062774264ee8109459bc12d142be34a73de4cc1e6d458"
+  },
+  "/projects/nocturne-desktop.png": {
+    "full": "/assets/nocturne-desktop-e5932101b9d9.webp",
+    "bytes": 34326,
+    "sourceHash": "c8937dfcc1bb4d8ffdc542c4ae3ed73d9556c0cccc89ea44fc4d8c2bdd20e51b"
+  },
+  "/projects/nocturne-browser.png": {
+    "full": "/assets/nocturne-browser-d7606d6edcdf.webp",
+    "bytes": 130578,
+    "sourceHash": "a31867f81b54e63bb01162b412cf1a1b6280384c458e0d6ec0c6cd158a05b8de"
+  },
+  "/projects/nocturne-agent.png": {
+    "full": "/assets/nocturne-agent-1baaed6068d7.webp",
+    "bytes": 40520,
+    "sourceHash": "bd8335262a0bdaa37d09fcf980f38d6e028b1f5d9c6caa9a826510f488bd600e"
+  }
+}

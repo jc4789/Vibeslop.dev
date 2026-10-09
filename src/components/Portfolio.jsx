@@ -1,5 +1,15 @@
 import { useRef, useState } from 'react'
 import { LEARNING_STEPS, NOCTURNE_SHOTS, PROJECTS, SELF_PR, YUYAN_SHOTS } from '../lib/portfolio'
+import imageAssets from '../lib/image-assets.json'
+
+function ScreenshotImage({ shot, preview = false }) {
+  const asset = imageAssets[shot.src]
+  const responsive = preview && asset?.preview
+  return <picture className="screenshot-picture">
+    {asset && <source type="image/webp" srcSet={responsive ? `${asset.preview} ${asset.previewWidth}w, ${asset.full} ${shot.width}w` : asset.full} sizes={responsive ? '(max-width: 850px) 90vw, (max-width: 1300px) 50vw, 640px' : undefined} />}
+    <img src={shot.src} alt={shot.alt} width={shot.width} height={shot.height} loading={preview ? 'lazy' : undefined} decoding="async" />
+  </picture>
+}
 
 export function SandbagControl({ level, onChange }) {
   const current = SELF_PR[level]
@@ -31,11 +41,11 @@ function ScreenshotGallery({ shots, name, className }) {
   function close() { dialog.current?.close() }
   return <div className={`screenshot-gallery ${className}`}>
     <div className="capture-bar"><span>{current.source}</span><span>{current.width} × {current.height}</span></div>
-    <a ref={opener} className="screenshot-button" href={current.src} target="_blank" rel="noopener noreferrer" onClick={event => { if (typeof dialog.current?.showModal === 'function') { event.preventDefault(); open() } }} aria-label={`${name}の${current.label}の画面を拡大`}><img src={current.src} alt={current.alt} width={current.width} height={current.height} loading="lazy" /><span className="enlarge-hint">画面を拡大 ↗</span></a>
+    <a ref={opener} className="screenshot-button" href={current.src} target="_blank" rel="noopener noreferrer" onClick={event => { if (typeof dialog.current?.showModal === 'function') { event.preventDefault(); open() } }} aria-label={`${name}の${current.label}の画面を拡大`}><ScreenshotImage shot={current} preview /><span className="enlarge-hint">画面を拡大 ↗</span></a>
     <div className="capture-tabs" role="group" aria-label={`${name}のスクリーンショット`}>{shots.map((shot, i) => <button key={shot.src} aria-pressed={i === index} onClick={() => setIndex(i)}>{String(i + 1).padStart(2, '0')} {shot.label}</button>)}</div>
     <p className="capture-caption" aria-live="polite">{current.caption}</p>
     <dialog ref={dialog} className="screenshot-dialog" aria-label={`${name}の${current.label}の拡大画面`} onClick={event => { if (event.target === event.currentTarget) close() }} onClose={() => { setExpanded(false); opener.current?.focus() }}>
-      {expanded && <><div className="dialog-toolbar"><strong>{name} — {current.label}</strong><button className="retro-button" onClick={close} autoFocus>拡大画面を閉じる ×</button></div><img src={current.src} alt={current.alt} width={current.width} height={current.height} /><p>{current.caption}</p></>}
+      {expanded && <><div className="dialog-toolbar"><strong>{name} — {current.label}</strong><button className="retro-button" onClick={close} autoFocus>拡大画面を閉じる ×</button></div><ScreenshotImage shot={current} /><p>{current.caption}</p></>}
     </dialog>
   </div>
 }

@@ -1,0 +1,259 @@
+/* ネオンの個人サイト。作品の本文だけは、読めることを優先する。 */
+.glitch-title { color: #dbd5ef; font-size: clamp(46px, 7.4vw, 94px); }
+.portal-hero { padding-block: 16px; }
+.hero-top { padding-bottom: 10px; margin-bottom: 10px; }
+.hero-top .visitor-counter { display: grid; grid-template-columns: auto auto; gap: 6px 11px; align-items: center; min-width: 250px; }
+.hero-top .visitor-counter > span { margin: 0; font-size: 7px; }
+.hero-top .visitor-counter b { width: 19px; height: 25px; font-size: 17px; }
+.hero-top .visitor-counter small { grid-column: 1 / -1; margin: 0; }
+.under-construction { margin-block: 8px 12px; }
+.portfolio-introduction { min-height: 78px; }
+.portfolio-introduction .hero-motto { margin-top: 18px; }
+.portfolio-introduction .hero-motto em { color: #e9f9ff; }
+.portfolio-introduction .hero-blurb { margin: 9px auto 16px; }
+.sandbag-console { max-width: 680px; margin: 0 auto; text-align: left; border: 2px outset #9a89b4; background: #111120; box-shadow: 4px 4px #000; }
+.sandbag-heading { display: flex; justify-content: space-between; gap: 12px; color: #ebff83; padding: 6px 12px; font-size: 9px; border-bottom: 1px solid #565069; background: #29223c; }
+.sandbag-heading b { font-weight: 400; color: #b5a5c7; }
+.sandbag-body { display: grid; grid-template-columns: 155px 1fr; gap: 20px; padding: 13px 18px; }
+.sandbag-reading { border-right: 1px dashed #5e5776; padding-right: 18px; }
+.sandbag-reading strong { display: block; color: var(--green); font: 900 37px "Courier New", monospace; line-height: 1; }
+.sandbag-reading strong small { font-size: 18px; }
+.sandbag-reading > span { color: #bca8c7; font-size: 8px; line-height: 1.7; display: block; margin-top: 7px; }
+.sandbag-buttons { display: flex; gap: 5px; }
+.sandbag-buttons .retro-button { font-size: 10px; padding: 6px 11px; min-height: 30px; flex: 1; }
+.sandbag-meter { background: #030408; height: 9px; border: 1px inset #8c7e9f; margin: 9px 0 7px; }
+.sandbag-meter > span { display: block; height: 100%; background: repeating-linear-gradient(90deg,#cefc51 0 8px,#243d16 8px 11px); transition: width .3s ease; }
+.sandbag-settings > p { font-size: 8px; color: #bcabbf; }
+.hero-project-index { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 680px; margin: 16px auto; text-align: left; }
+.hero-project-index > a { display: grid; grid-template-columns: 1fr auto; gap: 3px 9px; text-decoration: none; border: 1px solid #54456b; padding: 11px 16px; background: #171025; color: #fff; }
+.hero-project-index > a:first-child { border-left: 3px solid var(--cyan); }
+.hero-project-index > a:last-child { border-left: 3px solid var(--pink); }
+.hero-project-index > a:hover { border-color: var(--yellow); background: #2b1937; }
+.hero-project-index span { font-size: 8px; color: #b7a4c4; }
+.hero-project-index strong { grid-column: 1; font-size: 17px; letter-spacing: -.5px; }
+.hero-project-index small { grid-column: 2; grid-row: 1 / 3; align-self: end; font-size: 7px; color: var(--cyan); }
+.hero-project-index > a:last-child small { color: #ff93d9; }
+.portfolio-area { margin-top: 12px; scroll-margin-top: 20px; }
+.works-heading { display: flex; justify-content: space-between; align-items: end; gap: 15px; padding-block: 25px 17px; }
+.works-heading .section-title { margin-bottom: 0; font-size: 30px; }
+.works-heading .tiny-label { color: #a998bb; font-size: 8px; letter-spacing: 1px; }
+.works-heading .section-title > span { display: block; margin: 11px 0 0; }
+.works-count { display: block; font-size: 11px; color: var(--green); border: 1px solid #215f49; padding: 9px 14px; text-align: right; }
+.works-count small { display: block; font-size: 7px; color: #a494ae; margin-top: 5px; }
+.project-dossier { border: 2px solid var(--cyan); margin-top: 15px; background: #11101cf2; box-shadow: 6px 6px #000, 0 0 20px #00e5ff13; scroll-margin-top: 25px; }
+.project-dossier + .project-dossier { margin-top: 36px; }
+.project-titlebar { display: flex; justify-content: space-between; align-items: center; gap: 14px; background: linear-gradient(90deg,#036e77,#142e6a 65%,#351940); padding: 8px 13px; font-size: 10px; color: #e3ffff; }
+.project-titlebar span:nth-child(2) { margin-left: auto; color: #d5b7db; font-size: 8px; }
+.project-titlebar a { color: #181528; text-decoration: none; background: #bab8d3; border: 2px outset #d9d2e0; padding: 0 5px; font-size: 12px; }
+.project-heading { display: flex; align-items: center; gap: 22px; padding: 24px 26px 20px; }
+.project-number { font: 900 62px Impact, "Arial Black", sans-serif; color: #44405e; -webkit-text-stroke: 1px #827798; line-height: 1; }
+.project-status { color: #a797b6; font-size: 9px; margin-bottom: 4px; }
+.project-heading h3 { font: 900 clamp(28px, 3vw, 41px) "Courier New", "MS Gothic", monospace; color: #eefaff; letter-spacing: -1.5px; }
+.project-stamp { margin-left: auto; color: #afffd7; border: 2px double #61b298; padding: 7px 12px; transform: rotate(5deg); font-size: 9px; line-height: 1.5; text-align: center; }
+.project-layout { display: grid; grid-template-columns: 1.32fr 1fr; gap: 29px; padding: 0 26px 26px; align-items: start; }
+.project-layout > * { min-width: 0; }
+.capture-bar { display: flex; justify-content: space-between; gap: 8px; background: #1f1830; color: #c3b8d6; padding: 6px 9px; font-size: 8px; border: 1px solid #514267; border-bottom: 0; }
+.screenshot-button { display: block; position: relative; width: 100%; padding: 0; background: #060510; border: 1px solid #716080; overflow: hidden; }
+.screenshot-button img { display: block; width: 100%; height: auto; }
+.enlarge-hint { position: absolute; bottom: 9px; right: 9px; font-size: 9px; padding: 5px 8px; border: 1px solid #b8f8ec; background: #0a1424e8; color: #c0fff3; }
+.screenshot-button:hover .enlarge-hint { color: var(--yellow); border-color: var(--yellow); }
+.capture-tabs { display: flex; gap: 6px; margin-top: 10px; }
+.capture-tabs button { background: #1c152c; color: #bab0cc; border: 1px solid #695281; padding: 8px 10px; font-size: 9px; min-height: 34px; flex: 1; }
+.capture-tabs button[aria-pressed="true"] { color: #050e15; background: #a4e1cf; border-color: #d4ffee; }
+.capture-caption { color: #b8a8c7; font-size: 9px; margin-top: 10px; min-height: 32px; }
+.screenshot-dialog { color: #fff; background: #111020; border: 2px solid var(--cyan); padding: 14px; width: min(1320px, calc(100vw - 30px)); max-width: none; max-height: calc(100dvh - 30px); overflow: auto; }
+.screenshot-dialog::backdrop { background: #03030bec; }
+.dialog-toolbar { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 12px; font-size: 12px; }
+.dialog-toolbar .retro-button { font-size: 10px; }
+.screenshot-dialog img { width: 100%; height: auto; max-height: calc(100dvh - 140px); object-fit: contain; display: block; }
+.screenshot-dialog p { font-size: 10px; color: #c5b7d2; margin-top: 10px; }
+.understatement { border-left: 2px solid #8c7aa0; padding-left: 14px; margin: 0 0 17px; }
+.understatement > span { display: block; color: #ab94bb; font-size: 8px; margin-bottom: 8px; }
+.understatement h4 { font-size: 22px; line-height: 1.5; letter-spacing: -.7px; color: #f3fff6; margin: 0; }
+.understatement > button { display: block; background: none; border: 0; font-size: 9px; color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; padding: 9px 0 0; }
+.project-description { color: #d9cee3; font-size: 13px; line-height: 1.9; }
+.project-features { display: grid; gap: 13px; margin-top: 21px; }
+.project-features > div { padding-left: 15px; border-left: 1px solid #4a385b; }
+.project-features dt { color: #a7f2dc; font-size: 11px; margin-bottom: 5px; font-weight: 800; }
+.project-features dd { font-size: 11px; color: #bcafc9; line-height: 1.8; }
+.project-tags { display: flex; gap: 5px; flex-wrap: wrap; padding-top: 17px; margin-top: 17px; border-top: 1px dashed #67416e; }
+.project-tags > span { padding: 5px 7px; background: #211830; border: 1px solid #554262; font-size: 8px; color: #d1bcdf; }
+.project-footnote { margin-top: 16px; font-size: 10px; border: 1px solid #4c3d5d; background: #0b0915; }
+.project-footnote summary { padding: 9px 12px; cursor: pointer; color: #c4aad7; }
+.project-footnote summary:focus-visible, .compiler-annex summary:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+.project-footnote p { font-size: 9px; color: #b1a0be; padding: 0 12px 10px; }
+.project-bottomline { border-top: 1px solid #215b65; display: flex; justify-content: space-between; gap: 15px; padding: 11px 26px; background: #0b1420; font-size: 9px; color: #a4c4cd; }
+.project-bottomline a { color: var(--cyan); white-space: nowrap; text-decoration: none; }
+.project-bottomline a:hover { text-decoration: underline; }
+.yuyan-dossier { border-color: var(--pink); box-shadow: 6px 6px #000, 0 0 20px #ff20b713; }
+.yuyan-dossier .project-titlebar { background: linear-gradient(90deg,#83125b,#632783 65%,#251344); }
+.yuyan-dossier .project-stamp { border-color: #d67aae; color: #ffb4e1; transform: rotate(-5deg); }
+.yuyan-dossier .project-features dt { color: #ffc6e8; }
+.yuyan-dossier .project-bottomline { background: #1a0d23; border-color: #613259; color: #c6afcf; }
+.yuyan-dossier .project-bottomline a, .yuyan-dossier .understatement > button { color: #ff9dda; }
+.yuyan-gallery .screenshot-button { height: 520px; background: radial-gradient(ellipse at center,#29302d 0,#111718 55%,#080d11 100%); }
+.yuyan-gallery .screenshot-button img { width: 100%; height: 100%; object-fit: contain; }
+.yuyan-gallery .capture-tabs { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); }
+.yuyan-gallery .capture-tabs button[aria-pressed="true"] { background: #eeb9d9; border-color: #ffd6eb; }
+.yuyan-gallery .screenshot-dialog { border-color: var(--pink); }
+.atlas-disclosure { border: 1px solid #633557; margin-top: 16px; background: #140c1d; }
+.atlas-disclosure > summary { padding: 11px; cursor: pointer; color: #ebbedb; font-size: 10px; }
+.atlas-disclosure > summary > span { display: block; color: #a689ad; font-size: 8px; margin: 6px 0 0 15px; }
+.atlas-disclosure > summary:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+.atlas-disclosure .learning-atlas { margin: 0 10px 10px; }
+.atlas-label { display: flex; justify-content: space-between; gap: 8px; background: #3b1e3e; color: #f7c9df; padding: 7px 10px; font-size: 8px; }
+.atlas-paper { position: relative; isolation: isolate; overflow: hidden; min-height: 280px; background: #f0ecd8; color: #25172f; padding: 20px 23px; background-image: linear-gradient(#97608a11 1px, transparent 1px); background-size: 100% 25px; border: 1px solid #d5b5b7; }
+.atlas-big-word { position: absolute; right: -14px; top: 41px; font: 900 115px "MS Gothic", "Yu Gothic", sans-serif; color: #e4cdd5; z-index: -1; transform: rotate(-9deg); letter-spacing: -10px; }
+.atlas-paper-top { display: flex; gap: 7px; }
+.atlas-paper-top span { padding: 4px 9px; font-size: 8px; border: 1px solid #81718b; color: #60456c; background: #e9e3d5; }
+.atlas-statement { font-size: 24px; line-height: 1.6; margin-top: 26px; letter-spacing: -.8px; font-weight: 800; }
+.atlas-statement strong { background: linear-gradient(transparent 55%,#f6e265 55%); font-weight: 900; }
+.atlas-token { display: flex; align-items: center; gap: 13px; margin-top: 20px; }
+.atlas-token > span { font-size: 15px; padding: 5px 15px; border: 2px solid #9f327c; background: #f3d7ec; box-shadow: 3px 3px #c9a5c4; }
+.atlas-token > small { color: #846978; font-size: 9px; }
+.atlas-annotation { position: absolute; right: 17px; bottom: 46px; background: #ecf788; border: 1px solid #b7b366; padding: 9px; color: #374222; transform: rotate(6deg); font-size: 10px; font-weight: 900; box-shadow: 2px 3px #56452a30; }
+.atlas-paper-footer { border-top: 1px dashed #b395a7; color: #8a6378; font-size: 8px; margin-top: 27px; padding-top: 11px; letter-spacing: 2px; }
+.atlas-steps { list-style: none; display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; padding: 10px 0 0; margin: 0; }
+.atlas-steps button { width: 100%; padding: 9px 5px; font-size: 10px; background: #24172d; border: 1px solid #774263; color: #d4bddc; min-height: 40px; }
+.atlas-steps button > small { color: #ad7dac; font-size: 8px; margin-right: 6px; }
+.atlas-steps button[aria-pressed="true"] { background: #edd591; color: #33182b; border-color: #f9e5a1; }
+.atlas-steps button[aria-pressed="true"] > small { color: #734563; }
+.atlas-description { padding: 14px; border: 1px dashed #975683; margin-top: 10px; min-height: 138px; }
+.atlas-description h4 { margin: 0 0 6px; font-size: 12px; color: #ffbddf; }
+.atlas-description p { font-size: 11px; color: #bcabc6; }
+.atlas-description > small { font-size: 8px; color: #9676a3; display: block; margin-top: 9px; }
+.portfolio-disclaimer { display: grid; grid-template-columns: auto 1fr; gap: 9px 20px; padding: 20px 0; margin-block: 16px 28px; color: #b1a0be; border-bottom: 1px dashed #6a3e65; font-size: 10px; }
+.portfolio-disclaimer b { color: var(--yellow); font-size: 10px; }
+.portfolio-disclaimer > span { grid-column: 2; color: #857193; font-size: 8px; }
+.intro-grid { scroll-margin-top: 25px; }
+.webmaster .maker-quote { font-size: 12px; color: var(--green); margin-top: 16px; }
+.handoff-bio { color: #c3accd; font-size: 11px; min-height: 62px; margin-top: 15px; }
+.basement-sign { display: flex; align-items: center; gap: 25px; border-top: 1px dashed #7b507d; padding-top: 30px; margin-bottom: 30px; }
+.basement-sign > span { background: #d8e59e; color: #20211c; padding: 8px 14px; font-weight: 900; font-size: 13px; transform: rotate(-3deg); box-shadow: 3px 3px #000; }
+.basement-sign p { font-size: 10px; color: #a692b6; }
+.lab-toolbar { justify-content: flex-start; margin: 0 0 14px; }
+.compiler-annex { margin-top: 22px; border: 1px solid #605377; padding: 15px; background: #0b0b18; }
+.compiler-annex > summary { cursor: pointer; color: #cabae1; font-size: 12px; }
+.compiler-annex > summary > span { font-size: 8px; color: #8f7c9f; margin-left: 12px; }
+.compiler-annex .build-grid { margin-top: 16px; }
+.chaos-mode .project-stamp { transform: rotate(12deg); color: var(--yellow); border-color: var(--yellow); }
+.calm-mode .project-stamp, .calm-mode .atlas-annotation, .calm-mode .basement-sign > span { transform: none; }
+.calm-mode .project-dossier { box-shadow: none; }
+.calm-mode .portfolio-introduction .hero-motto em { text-shadow: none; }
+
+@media (max-width: 1100px) {
+  .project-layout { gap: 22px; padding-inline: 20px; grid-template-columns: 1.15fr 1fr; }
+  .project-heading { padding-inline: 20px; }
+  .understatement h4 { font-size: 20px; }
+  .atlas-statement { font-size: 21px; }
+  .atlas-annotation { font-size: 8px; right: 10px; }
+  .atlas-paper { padding-inline: 18px; }
+  .atlas-steps button { font-size: 9px; }
+  .atlas-steps button > small { display: block; margin: 0 0 3px; }
+}
+@media (max-width: 850px) {
+  .project-layout { grid-template-columns: 1fr; gap: 24px; }
+  .project-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
+  .project-copy .understatement, .project-copy .project-description { grid-column: 1; }
+  .project-features { grid-column: 2; grid-row: 1 / 4; margin-top: 0; }
+  .project-tags, .project-footnote { grid-column: 1 / -1; }
+  .project-heading h3 { font-size: 36px; }
+  .atlas-paper { min-height: 310px; padding: 22px 30px; }
+  .atlas-statement { font-size: 29px; }
+  .atlas-big-word { font-size: 160px; right: 30px; }
+  .atlas-annotation { right: 35px; bottom: 50px; font-size: 12px; padding: 13px; }
+  .atlas-description { min-height: 100px; }
+  .atlas-steps button > small { display: inline; margin-right: 6px; }
+  .works-heading .section-title { font-size: 27px; }
+  .hero-project-index small { display: none; }
+}
+@media (max-width: 600px) {
+  .hero-top .visitor-counter { min-width: 240px; }
+  .hero-top .visitor-counter b { width: 17px; height: 23px; font-size: 15px; }
+  .glitch-title { font-size: clamp(32px, 8.6vw, 52px); }
+  .portfolio-introduction { min-height: 100px; }
+  .portfolio-introduction .hero-motto { margin-top: 18px; }
+  .portfolio-introduction .hero-motto em { font-size: 21px; max-width: 340px; margin-inline: auto; }
+  .portfolio-introduction .hero-blurb { font-size: 10px; margin-block: 10px 16px; }
+  .sandbag-heading { font-size: 8px; padding-inline: 9px; }
+  .sandbag-heading b { font-size: 7px; }
+  .sandbag-body { grid-template-columns: 61px 1fr; gap: 12px; padding: 12px 10px; }
+  .sandbag-reading { padding-right: 9px; }
+  .sandbag-reading strong { font-size: 25px; }
+  .sandbag-reading strong small { font-size: 12px; }
+  .sandbag-reading > span { font-size: 6px; }
+  .sandbag-buttons { gap: 3px; }
+  .sandbag-buttons .retro-button { font-size: 8px; padding: 5px 4px; min-height: 34px; }
+  .sandbag-settings > p { font-size: 7px; }
+  .hero-project-index { gap: 8px; margin-block: 14px; }
+  .hero-project-index > a { padding: 10px; }
+  .hero-project-index strong { font-size: 16px; }
+  .hero-project-index span { font-size: 7px; }
+  .works-heading { padding-top: 16px; align-items: start; gap: 10px; }
+  .works-heading .section-title { font-size: 23px; }
+  .works-heading .section-title > span { max-width: 230px; font-size: 8px; }
+  .works-count { padding: 8px; font-size: 8px; white-space: nowrap; }
+  .works-count small { font-size: 6px; }
+  .works-heading .tiny-label { font-size: 6px; letter-spacing: .2px; }
+  .project-titlebar { padding: 7px 8px; font-size: 8px; gap: 8px; }
+  .project-titlebar span:nth-child(2) { font-size: 6px; }
+  .project-heading { padding: 20px 14px 16px; gap: 12px; }
+  .project-number { font-size: 40px; }
+  .project-heading h3 { font-size: 27px; letter-spacing: -1px; }
+  .project-status { font-size: 7px; }
+  .project-stamp { padding: 6px; font-size: 6px; }
+  .project-layout { padding: 0 14px 20px; gap: 20px; }
+  .capture-bar { font-size: 6px; }
+  .enlarge-hint { font-size: 7px; padding: 3px 5px; right: 6px; bottom: 6px; }
+  .capture-tabs { gap: 4px; }
+  .capture-tabs button { padding: 7px 4px; font-size: 8px; min-height: 44px; }
+  .capture-caption { font-size: 8px; min-height: 0; }
+  .yuyan-gallery .screenshot-button { height: 460px; }
+  .yuyan-gallery .capture-tabs { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .project-copy { display: block; }
+  .understatement h4 { font-size: 20px; }
+  .project-description { font-size: 12px; }
+  .project-features { margin-top: 19px; gap: 15px; }
+  .project-features dt { font-size: 11px; }
+  .project-features dd { font-size: 11px; }
+  .project-bottomline { flex-direction: column; gap: 8px; padding: 10px 14px; font-size: 8px; }
+  .project-dossier + .project-dossier { margin-top: 25px; }
+  .atlas-label { font-size: 6px; padding: 6px 8px; }
+  .atlas-paper { min-height: 260px; padding: 16px; }
+  .atlas-paper-top span { font-size: 7px; padding: 4px 6px; }
+  .atlas-statement { font-size: 21px; margin-top: 22px; }
+  .atlas-big-word { font-size: 116px; right: -10px; top: 60px; }
+  .atlas-token { margin-top: 20px; }
+  .atlas-token > span { font-size: 13px; padding: 5px 10px; }
+  .atlas-annotation { font-size: 8px; padding: 7px; right: 10px; bottom: 47px; }
+  .atlas-paper-footer { font-size: 7px; letter-spacing: 1px; }
+  .atlas-steps button { font-size: 9px; }
+  .atlas-steps button > small { display: block; margin: 0 0 3px; }
+  .atlas-description { min-height: 148px; padding: 12px; }
+  .atlas-description h4 { font-size: 11px; }
+  .atlas-description > small { font-size: 7px; }
+  .portfolio-disclaimer { grid-template-columns: 1fr; gap: 9px; font-size: 9px; margin-bottom: 18px; }
+  .portfolio-disclaimer > span { grid-column: 1; }
+  .webmaster .maker-quote { font-size: 10px; }
+  .handoff-bio { font-size: 10px; }
+  .basement-sign { gap: 17px; padding-top: 23px; }
+  .basement-sign > span { font-size: 11px; }
+  .basement-sign p { font-size: 8px; }
+  .compiler-annex { padding: 11px; }
+  .compiler-annex > summary { font-size: 10px; }
+  .compiler-annex > summary > span { display: block; margin: 8px 0 0 14px; }
+  .dialog-toolbar { flex-wrap: wrap; font-size: 10px; }
+  .screenshot-dialog { padding: 10px; }
+  .screenshot-dialog p { font-size: 9px; }
+}
+@media (max-width: 360px) {
+  .sandbag-heading b { display: none; }
+  .sandbag-body { grid-template-columns: 46px 1fr; gap: 8px; padding-inline: 8px; }
+  .sandbag-reading strong { font-size: 23px; }
+  .sandbag-reading > span { font-size: 5px; }
+  .sandbag-buttons .retro-button { font-size: 7px; }
+  .project-stamp { display: none; }
+  .project-heading h3 { font-size: 26px; }
+  .hero-project-index strong { font-size: 14px; }
+  .atlas-statement { font-size: 18px; }
+}

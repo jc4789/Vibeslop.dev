@@ -1,6 +1,8 @@
 # vibeslop.dev
 
-An overbuilt, neon, late-1990s personal homepage satirizing AI-driven development. Not a product, a storefront, or a waitlist.
+自作OS **Nocturne OS** と中国語の没入型学習アプリ **「语言」** を紹介する、ネオン過剰な個人ポートフォリオ。作品は本物、看板は控えめ。AI開発の風刺とサンドバッグを残し、販売や会員登録はしません。
+
+作品説明の参照元と画像の出典は [内容参照](docs/portfolio-content.md)。両プロジェクトの文書と既存スクリーンショットを紹介素材として読み、作品の監査・ビルド・テストは行っていません。
 
 React 19, a real Vue 3 island inside React, Zustand, Three.js, Motion, Vite and Tailwind 4. Yes, this is unnecessary. That is part of the joke.
 
@@ -25,6 +27,10 @@ npm run build
 
 ## The experience
 
+- 自己PR出力制限装置：20 / 55 / 100%で看板のコピーだけを切替。能力測定値でも、作品の達成率でもありません。実際の説明や使用技術は変わりません。
+- Nocturneは作者提供の使用画面を主役に、READMEの3枚を含む無加工の実スクリーンショット4枚を切替・拡大。ネイティブdialogがないブラウザーでは、画像そのものを別タブで開きます。
+- 语言は作者提供の無加工スクリーンショット8枚を切替・拡大。読書、記事の保存確認、辞書ポップアップ、動画検索・再生、Jellyfinを掲載。辞書データは同梱せず、利用者が自分で用意して取り込みます。「読む・聴く → 選ぶ → 調べる → 残す」の紹介図は、補足として開けます。架空のアプリ画面やブラウザー版ではありません。
+- 作品の公開リポジトリ・配布先は推測せず、存在しないダウンロード/連絡先を置きません。
 - A CRT/Geocities portal, local visitor counter, popups you can drag, and a secret mode (press V three times outside an input).
 - Vue renders the builder form and timed satirical log. A deterministic local generator creates working todo, calculator, or counter mini-apps; this does not use AI inference.
 - A Three.js dependency graph: five genuinely used libraries, plus explicitly fictional packages you can add/remove. Capped at 64 nodes. It pauses offscreen/in background and respects reduced motion.

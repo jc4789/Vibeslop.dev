@@ -27,8 +27,11 @@ npm run build
 
 ## The experience
 
-- 自己PR出力制限装置：20 / 55 / 100%で看板のコピーだけを切替。能力測定値でも、作品の達成率でもありません。実際の説明や使用技術は変わりません。
-- Nocturneは作者提供の「自作OSでこのサイトを開く」画面と制作中の机を主役に、READMEの3枚を含む実スクリーンショット6枚を切替・拡大。配信はロスレスWebPを優先し、元PNGも保持。ネイティブdialogがないブラウザーでは、元画像を別タブで開きます。
+- 非ユークリッド回廊：五枚の正方形の東辺と次室の南辺を接続。一周450°の頂点を持つ空間を、画素ごとの光線追跡と同じ座標変換で実際に歩けます。扉越しに隣室と実作品の画像が見え、展示から通常の作品紹介へ移動できます。
+- 回廊は明示的に入ったときだけWebGL2コードを取得。静止時に連続描画せず、非表示・背景タブ・フォーカス離脱で歩行を停止。WASD・矢印・ドラッグ、タッチ用の移動ボタンに加え、連続移動不要の扉ボタンを用意。描画非対応でも同じ接続を辿れます。経路は保存・送信しません。
+- 自己申告翻訳装置：「いつもの謙遜」「少し漏れる」「事実を述べる」で看板のコピーだけを切替。根拠のない百分率や能力スコアは表示せず、実際の機能説明や使用技術は変わりません。
+- Nocturneの近況を、作者提供のFirefox / Gecko WASM実行画面と「+1,005,910行」のコミット明細で紹介。WebGL / WebGL2はMesaのソフトウェア描画、追加行数は依存コードの取り込みを含むことを明記。Claudeの共同著者記録と公開ソースへもリンクします。
+- NocturneはREADMEの3枚を含む実スクリーンショットを切替・拡大。配信はロスレスWebPを優先し、元PNGも保持。ネイティブdialogがないブラウザーでは、元画像を別タブで開きます。
 - 语言は作者提供の無加工スクリーンショット8枚を切替・拡大。読書、記事の保存確認、辞書ポップアップ、動画検索・再生、Jellyfinを掲載。辞書データは同梱せず、利用者が自分で用意して取り込みます。「読む・聴く → 選ぶ → 調べる → 残す」の紹介図は、補足として開けます。架空のアプリ画面やブラウザー版ではありません。
 - 作品の公開リポジトリ・配布先は推測せず、存在しないダウンロード/連絡先を置きません。
 - A CRT/Geocities portal, local visitor counter, popups you can drag, and a secret mode (press V three times outside an input).
@@ -38,6 +41,7 @@ npm run build
 - A fictional-news generator with clipboard copy, an unaccountable oracle, and a dog who agrees with opposite review instructions.
 - Local-only guestbook, one-vote-per-browser poll, framework additions, and visit counter persist in localStorage. Guestbook input is plain text, not HTML; at most 30 entries are saved and 8 displayed. Guestbook removal can be undone until the page is reloaded.
 - CRT-off and quiet visual modes, accessible controls, responsive layouts, and reduced-motion support. Popups become inline on phones.
+- 重い実験用ライブラリは後から取得：Three.jsは実験室が画面に入ったとき、Vueの生成器は折りたたみを初めて開いたときに読み込みます。作品を見るだけの訪問に実験室の負担を乗せません。
 
 Everything runs in the browser. No accounts, purchases, payments, trackers, remote fonts, AI calls, or deployments. No guestbook data leaves the browser. The production content security policy blocks all script-initiated network connections. The visitor counter is not a global traffic count; seed poll votes and seed guestbook entries are explicitly fictional. The five base libraries are really bundled; clicking “add framework” adds a graph node, not an npm installation.
 

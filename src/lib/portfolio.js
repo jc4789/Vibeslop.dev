@@ -1,29 +1,30 @@
 // 作品の事実は docs/portfolio-content.md の参照元に基づく。自己紹介の声量だけを変える。
 export const SELF_PR = [
-  { label: 'いつもの謙遜', output: 20, heading: 'ちょっと、作っています。', description: 'OSをひとつ。語学アプリをひとつ。大げさな自己紹介は後回し。' },
-  { label: '少し漏れる', output: 55, heading: '小さいと言い張っています。', description: '窓を開くためにカーネルを。単語を調べるためにプレイヤーを。' },
-  { label: '事実を述べる', output: 100, heading: 'OSと、学習アプリを作っています。', description: '低レイヤーから、読む・聴く・調べる体験まで。個人で制作中です。' },
+  { label: 'いつもの謙遜', reading: '些細', heading: '大したものでは、ないです。', description: '趣味のOSでFirefoxが動いたり、本を読む道具がアプリになったり。その程度の寄り道です。' },
+  { label: '少し漏れる', reading: '漏出', heading: '「ちょっと」の差分が、大きい。', description: '窓を開くためにカーネルを。ブラウザーを開くために、もう一つブラウザーを。単語を引くためにアプリを。' },
+  { label: '事実を述べる', reading: '事実', heading: 'OSと、学習アプリを作っています。', description: '自作OSのブラウザーにWebGL・WebAssembly。学習アプリには読書・動画・辞書。どちらも個人で開発中です。' },
 ]
 
 export const PROJECTS = [
   {
     id: 'nocturne', number: '01', name: 'Nocturne OS', kind: '自作OS', badge: '夜更かしの副産物',
-    claims: ['ちょっと窓を開くだけ。', '窓の下も、だいたい作っています。', 'カーネルから作る、夜のためのOS。'],
-    description: 'Cで作る、x86-64の趣味OS。自作カーネルの上にデスクトップ、ネットワーク、ブラウザーを積みました。静かな夜空を眺めるには、ずいぶん遠回りです。',
+    claims: ['ブラウザーを、開いただけです。', '自作ブラウザーの中にFirefoxまで入っています。', 'カーネルからブラウザーまで作る、趣味のOS。'],
+    description: 'Cで作る、x86-64の趣味OS。自作カーネルの上にデスクトップ、ネットワーク、独自ブラウザー。そのブラウザーでWebGL・WebGL2とWebAssembly、さらにFirefox / GeckoのWASM版が動くところまで来ました。「ちょっと窓を開くだけ」の説明を、まだ使っています。',
     status: '趣味OS · 仮想マシン向け · 開発中',
-    tags: ['C', 'x86-64', 'QEMU / Hyper-V', 'Lexbor + QuickJS', 'TinyCC'],
+    tags: ['C', 'x86-64', 'QEMU / Hyper-V', 'Lexbor + QuickJS', 'WebGL / WebGL2', 'WebAssembly', 'Mesa', 'TinyCC'],
     features: [
       ['窓だけ、ではない', '合成ウィンドウ管理、タスクバー、通知、クリップボード。月と夜空の壁紙は手続き生成。'],
-      ['ブラウザーも内側から', 'HTML/CSSのレイアウトと描画はNocturne側。HTML解析にLexbor、JavaScriptにQuickJSを組み合わせる。'],
+      ['ブラウザーの中に、ブラウザー', '独自のHTML/CSS描画にLexborとQuickJS。Mesaのソフトウェア描画でWebGL / WebGL2を実装し、PuterのFirefox / Gecko WASM版を表示。ブラウザーを使うために、ブラウザーを作る。'],
       ['OSの中で、次を作る', 'TinyCCでCをコンパイル・実行。内蔵エージェントはコードを書く、起動する、画面を見るところまでつなぐ。'],
       ['消える場所と、残る場所', 'ルートはRAM。残したいファイルはFAT32の /data へ。再起動にまで空気を読ませない。'],
     ],
     note: 'QEMU / Hyper-V向けの実験的なOSです。日常利用OSや、全Webサイト互換を名乗ってはいません。',
-    credit: 'Limine、BearSSL、Lexbor、QuickJS、TinyCCなどの力も借りています。「全部ゼロから」の一行で消さない。',
+    credit: 'Limine、BearSSL、Lexbor、QuickJS、TinyCC、Mesaなどの力も借りています。Firefox / GeckoのWASM版はPuterの移植。Claudeの共同著者記録も含め、借りた力を「全部ゼロから」の一行で消さない。',
+    repository: 'https://github.com/jc4789/Nocturne-OS',
   },
   {
     id: 'yuyan', number: '02', name: '语言', kind: '没入型学習アプリ', badge: '読書のついで（当社比）',
-    claims: ['ちょっと単語を調べるだけ。', '読みたいだけなのに、道具が増えました。', '読む・聴く・調べる・残すをつなぐ。'],
+    claims: ['辞書を引きたかっただけです。', '辞書を引くまでに、辞書エンジンができました。', '読む・聴く・調べる・残すをつなぐ。'],
     description: '中国語から始める、Android先行の学習アプリ。本や記事、動画から出会った言葉を、その場で調べて手元に残す。「勉強するために別のアプリへ移動」を減らしたい。',
     status: 'Android先行 · ローカル中心 · 開発中',
     tags: ['Kotlin Multiplatform', 'Compose', 'Rust / UniFFI', '独自プレイヤー', 'sherpa-onnx'],
@@ -39,6 +40,7 @@ export const PROJECTS = [
 ]
 
 export const NOCTURNE_SHOTS = [
+  { label: 'Firefoxが中にいる', src: '/projects/nocturne-firefox-wasm.png', width: 1920, height: 1080, source: '作者提供の実画面 / 2026-10-16', alt: 'Nocturneの独自ブラウザーでPuterのFirefox WebAssembly版が動作し、その中でPuter.jsのドキュメントを表示。下部にはWebAssemblyの実行ログが見える。', caption: 'OSの中の、自作ブラウザーの中の、Firefoxの中のドキュメント。「ブラウザーを開いた」だけなら、間違ってはいません。' },
   { label: '本番の看板', src: '/projects/nocturne-portfolio.png', width: 1918, height: 1197, source: '作者提供の実画面', alt: 'Nocturneのデスクトップで、右の独自ブラウザーに公開中のvibeslop.devのポートフォリオを表示。左ではnestが次のアプリを制作している。', caption: '「ちょっと窓を開くだけ」の窓に、このサイトを表示。隣ではnestが次のアプリを制作中。看板まで自分のOSで見ています。' },
   { label: '制作中の机', src: '/projects/nocturne-workbench.png', width: 1917, height: 1200, source: '作者提供の実画面', alt: 'Nocturne上で左にnestの制作ログと、22:28・runningと進捗リングを表示するfocusd。右の独自ブラウザーにはNocturne自身の作品紹介ページを表示している。', caption: '左に22:28と進捗リング、右にOS自身の紹介。「ちょっと窓を開くだけ」と言い張っていますが、机の上が黙ってくれません。' },
   { label: '実際の使用画面', src: '/projects/nocturne-live.png', width: 1916, height: 1200, source: '作者提供の実画面', alt: 'Nocturne内のnestにOSがAIスロップか質問し、隣の独自ブラウザーで同じ問いをDuckDuckGo検索している実画面。', caption: '自作OSの中で「これはスロップ？」とAIに聞く。隣の自作ブラウザーでも検索。審査員もOSの中にいます。' },
@@ -46,6 +48,17 @@ export const NOCTURNE_SHOTS = [
   { label: 'ブラウザー', src: '/projects/nocturne-browser.png', width: 1280, height: 800, source: '実際の画面 / READMEより', alt: 'Nocturneの独自ブラウザーでWikipediaの月の記事を表示した画面。', caption: '自作ブラウザーで月の記事を表示。これは一つの画面で、全サイト対応の宣言ではありません。' },
   { label: 'OS内で制作', src: '/projects/nocturne-agent.png', width: 1280, height: 800, source: '実際の画面 / READMEより', alt: 'Nocturne内のエージェントが生成したBounceのウィンドウと端末。', caption: 'OS内のエージェントが作ったBounce。道具の中で、また道具を作る。' },
 ]
+
+// 作者提供のコミット画面の値。能力・品質の指標ではなく、依存コードを含む差分。
+export const NOCTURNE_UPDATE = {
+  date: '2026-10-16',
+  commit: 'c5d1c41',
+  commitUrl: 'https://github.com/jc4789/Nocturne-OS/commit/c5d1c41',
+  additions: 1005910,
+  deletions: 784,
+  files: 1882,
+  receipt: { label: '小変更の明細', src: '/projects/nocturne-small-commit.png', width: 1654, height: 454, source: '作者提供のコミット画面', alt: 'WebGLとWebGL2、Mesaの統合、Firefox WASMの動作を記載したコミット。1882ファイル変更、1005910行追加、784行削除とClaudeの共同著者表記が見える。', caption: '「ちょっと直した」の明細。追加行数にはMesa等の取り込みを含みます。100万行をすべて独自に書いた、という意味ではありません。' },
+}
 
 export const YUYAN_SHOTS = [
   { label: '読書と辞書', src: '/projects/yuyan-article-lookup.jpg', width: 570, height: 1280, source: '作者提供の実画面', alt: '语言で中国語の記事を読み、「半空」の辞書を本文の上に開いた実画面。発音と複数の辞書の語義が表示されている。', caption: '「半空」で立ち止まって、その場で辞書を開く。「ちょっと調べるだけ」のために、読書画面ごと作りました。' },

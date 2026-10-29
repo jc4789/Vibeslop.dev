@@ -3,7 +3,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { NOCTURNE_SHOTS, YUYAN_SHOTS } from '../src/lib/portfolio.js'
+import { NOCTURNE_SHOTS, NOCTURNE_UPDATE, YUYAN_SHOTS } from '../src/lib/portfolio.js'
 
 const modulePath = process.argv[2]
 const { default: sharp } = await import(modulePath ? pathToFileURL(resolve(modulePath)).href : 'sharp')
@@ -21,7 +21,7 @@ async function saveAsset(name, buffer) {
   return src
 }
 
-for (const shot of [...NOCTURNE_SHOTS, ...YUYAN_SHOTS]) {
+for (const shot of [...NOCTURNE_SHOTS, ...YUYAN_SHOTS, NOCTURNE_UPDATE.receipt]) {
   const source = await readFile(new URL(`public${shot.src}`, root))
   originalTotal += source.length
   // JPEGはすでに小さい。文字を再度非可逆圧縮せず、そのまま使う。

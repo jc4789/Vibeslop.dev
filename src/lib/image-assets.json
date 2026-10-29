@@ -1,4 +1,12 @@
 {
+  "/projects/nocturne-firefox-wasm.png": {
+    "full": "/assets/nocturne-firefox-wasm-bb6f1f212998.webp",
+    "bytes": 101630,
+    "sourceHash": "7437f092eb0df0b1e2785b3ad69068919a899222aaa45c4edc2aee521ca908b6",
+    "preview": "/assets/nocturne-firefox-wasm-960-24d0f9ff227f.webp",
+    "previewWidth": 960,
+    "previewBytes": 100358
+  },
   "/projects/nocturne-portfolio.png": {
     "full": "/assets/nocturne-portfolio-4dc914ad17d8.webp",
     "bytes": 159284,
@@ -34,5 +42,10 @@
     "full": "/assets/nocturne-agent-1baaed6068d7.webp",
     "bytes": 40520,
     "sourceHash": "bd8335262a0bdaa37d09fcf980f38d6e028b1f5d9c6caa9a826510f488bd600e"
+  },
+  "/projects/nocturne-small-commit.png": {
+    "full": "/assets/nocturne-small-commit-71161a3aa8bf.webp",
+    "bytes": 21452,
+    "sourceHash": "a455843aca5117d5ffd687a54c15bccafe11fc547fea2587a46b71481868edb1"
   }
 }
